@@ -1,0 +1,15 @@
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: ghcr.io/home-assistant/home-assistant:stable
+    volumes:
+      - ./config:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+      - ./hacs.sh:/hacs.sh
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - "8123:8123"
+    entrypoint: >
+      /bin/bash -c "bash /hacs.sh && exec /init"

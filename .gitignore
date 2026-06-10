@@ -1,0 +1,9 @@
+secrets.yaml
+*.db
+*.log
+*.log.1
+.storage/
+deps/
+home-assistant_v2.db-shm
+home-assistant_v2.db-wal
+README.md

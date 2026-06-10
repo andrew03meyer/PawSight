@@ -1,0 +1,26 @@
+mqtt:
+  sensor:
+    - name: "Temperature_am2660"
+      state_topic: "uok/iot/am2660/temps"
+      unit_of_measurement: "°C"
+      value_template: "{{ value_json.value}}"
+      device_class: temperature
+      state_class: measurement
+
+    - name: "lat_am2660"
+      state_topic: "uok/iot/am2660/gps"
+      unit_of_measurement: "°"
+      value_template: "{{ value_json.latitude }}"
+
+    - name: "long_am2660"
+      state_topic: "uok/iot/am2660/gps"
+      unit_of_measurement: "°"
+      value_template: "{{ value_json.longitude }}"
+
+template:
+  - sensor:
+      - name: "gps_am2660"
+        state: "ok"
+        attributes:
+          latitude: "{{ states('sensor.lat_am2660') | float }}"
+          longitude: "{{ states('sensor.long_am2660') | float }}"
