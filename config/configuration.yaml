@@ -1,3 +1,6 @@
+recorder:
+history:
+
 mqtt:
   sensor:
     - name: "Temperature_am2660"
